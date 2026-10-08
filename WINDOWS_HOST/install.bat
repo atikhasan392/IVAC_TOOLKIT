@@ -1,0 +1,12 @@
+@echo off
+setlocal
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0install.ps1"
+set EXITCODE=%ERRORLEVEL%
+echo.
+if not "%EXITCODE%"=="0" (
+  echo Installation failed with exit code %EXITCODE%.
+) else (
+  echo Installation completed.
+)
+pause
+exit /b %EXITCODE%

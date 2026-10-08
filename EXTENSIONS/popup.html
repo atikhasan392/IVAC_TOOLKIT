@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IVAC TOOLKIT</title>
+        <link rel="stylesheet" href="popup.css">
+    </head>
+
+    <body>
+        <main class="app">
+            <div class="terminal-bar">
+                <span class="terminal-title">SECURE SESSION // <a target="_blank" href="https://appointment.ivacbd.com/signin">IVAC</a></span>
+                <span class="terminal-status">WINDOWS VAULT</span>
+            </div>
+
+            <div class="tabs" role="tablist">
+                <button class="tab active" data-tab="signin" type="button">SIGN IN</button>
+                <button class="tab" data-tab="pdf" type="button">PDF UPLOADER</button>
+                <button class="tab" data-tab="dgePay" type="button">DGEPAY</button>
+            </div>
+
+            <section id="signinPanel" class="panel active">
+                <h1>IVAC AUTOFILL</h1>
+                <div class="field">
+                    <label for="phone">PHONE</label>
+                    <input id="phone" type="text" autocomplete="off" placeholder="ENTER PHONE NUMBER">
+                </div>
+                <div class="field">
+                    <label for="password">PASSWORD</label>
+                    <input id="password" type="text" autocomplete="off" placeholder="ENTER PASSWORD">
+                </div>
+                <label class="checkbox">
+                    <input id="autoSubmit" type="checkbox">
+                    <span>AUTO SUBMIT</span>
+                </label>
+                <div class="signin-actions">
+                    <button id="save" type="button">SAVE</button>
+                    <button id="fill" type="button">FILL</button>
+                    <button id="fillSubmit" class="primary-inline" type="button">FILL + SUBMIT</button>
+                </div>
+                <div id="signinStatus" class="status" aria-live="polite"></div>
+            </section>
+
+            <section id="pdfPanel" class="panel">
+                <h1>IVAC UPLOAD QUEUE</h1>
+                <p class="lead">ADD PDFS, ARRANGE THE QUEUE, THEN UPLOAD THEM TO THE CURRENT IVAC PAGE IN THE EXACT ORDER SHOWN.</p>
+                <label class="dropzone" for="files" id="dropzone">
+                    <span class="drop-icon">+</span>
+                    <strong>ADD PDF FILES</strong>
+                    <span>CHOOSE OR DROP MULTIPLE FILES</span>
+                    <input id="files" type="file" accept=".pdf,application/pdf" multiple>
+                </label>
+                <div class="summary">
+                    <span id="fileCount">NO SAVED FILES</span>
+                    <button id="clear" class="link-button" type="button" hidden>CLEAR ALL</button>
+                </div>
+                <div id="fileList" class="file-list" hidden></div>
+                <p id="orderHint" class="order-hint" hidden>DRAG ROWS OR USE THE ARROWS TO CHANGE UPLOAD ORDER.</p>
+                <button id="upload" class="primary" type="button" disabled>UPLOAD IN THIS ORDER</button>
+                <div id="pdfStatus" class="status" aria-live="polite">CONNECTING WINDOWS VAULT...</div>
+            </section>
+
+            <section id="dgePay" class="panel">
+                <h1>DGEPAY PAYMENTS</h1>
+
+                <div class="payment-list">
+                    <button class="payment-row" type="button" data-copy-number="01742538109">
+                        <span class="payment-info">
+                            <strong>BKASH + NAGAD</strong>
+                            <span>01742538109</span>
+                        </span>
+                        <span class="copy-status">COPY</span>
+                    </button>
+
+                    <button class="payment-row" type="button" data-copy-number="01635990584">
+                        <span class="payment-info">
+                            <strong>BKASH + ROCKET</strong>
+                            <span>01635990584</span>
+                        </span>
+                        <span class="copy-status">COPY</span>
+                    </button>
+                </div>
+
+                <div id="dgePayStatus" class="status" aria-live="polite"></div>
+            </section>
+
+            <div class="vault-profile">
+                <div class="vault-profile-info">
+                    <span>PROFILE VAULT</span>
+                    <code id="vaultProfileId">CONNECTING...</code>
+                </div>
+                <div class="vault-profile-actions">
+                    <button id="copyVaultId" type="button">COPY ID</button>
+                    <button id="useVaultId" type="button">USE ID</button>
+                    <button id="newVaultId" type="button">NEW ID</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <small class="copyright">Copyright &copy; Developed by&nbsp;<a target="_blank" rel="noopener noreferrer" href="https://atikhasan.com">ATik HaSan</a></small>
+                <small class="version">Version 6.1.0</small>
+            </div>
+        </main>
+        <script src="popup.js"></script>
+    </body>
+
+</html>

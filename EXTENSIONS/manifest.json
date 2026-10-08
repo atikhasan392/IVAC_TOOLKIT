@@ -1,0 +1,52 @@
+{
+    "manifest_version": 3,
+    "name": "IVAC TOOLKIT",
+    "version": "6.1.0",
+    "description": "IVAC Automation Extension with isolated Windows persistent vaults for browser profiles. Created by ATik HaSan.",
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuHyHwgb+XsR2GGSecKSS7LGswbPwLGtlymnbFDVx+63ymixGyGv2jbFUjDNZ55USSpi7xpCe1214vL/v/jpOjSD/bw/jpOIM8rVTlHQeGigWLKlXL/ONDDaP0cJa3JnCn7PrYerocqdWldZX46pkYtavmq1SnvipzqSrNzCbY+YLvyqky520IZTywFAOJO4utkP6wXqojzNrw5cV5s/67DZHoUftFYu5eFTRtDev8YwcZ/B4wh4Qo/GkyC5AOq95tUSqqVJwtMEVRQUMCxIazeBIeuan27f7Fp7s1VC439zJzWvwKovLQ/p8E6noXX6ma0nUbqVDxyTetMm9IfmN6QIDAQAB",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "nativeMessaging",
+        "storage"
+    ],
+    "icons": {
+        "16": "icon/16.png",
+        "32": "icon/32.png",
+        "48": "icon/48.png",
+        "128": "icon/128.png"
+    },
+    "host_permissions": [
+        "https://appointment.ivacbd.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "IVAC TOOLKIT",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://appointment.ivacbd.com/signin*"
+            ],
+            "js": [
+                "signin.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://appointment.ivacbd.com/*"
+            ],
+            "js": [
+                "pdf-uploader.js"
+            ],
+            "css": [
+                "pdf-uploader.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}
